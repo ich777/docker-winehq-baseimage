@@ -1,2 +1,1 @@
-# docker-winehq-baseimage
-
+Dockerbaseimage based on Ubuntu 18.04 with WINEHQ and wget preinstalled
