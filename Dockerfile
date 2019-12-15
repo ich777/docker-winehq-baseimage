@@ -2,4 +2,7 @@ FROM ubuntu
 
 MAINTAINER ich777
 
-CMD "sleep infinity"
+ADD /scripts/ /opt/scripts/
+
+#Server Start
+ENTRYPOINT ["/opt/scripts/start-server.sh"]
