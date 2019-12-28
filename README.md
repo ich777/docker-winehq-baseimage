@@ -1,1 +1,1 @@
-Dockerbaseimage based on Debian Buster-slim with WINEHQ and wget preinstalled
+A simple Debian Buster slim baseimage with ‘wineHQ’, ‘wget’ & ‘locales’ installed and set to ‘en_US.UTF-8 UTF-8’.
