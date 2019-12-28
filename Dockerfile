@@ -4,7 +4,7 @@ LABEL maintainer="admin@minenet.at"
 
 RUN dpkg --add-architecture i386 && \
 	apt-get update && \
-	apt-get -y install wget gnupg locales && \
+	apt-get -y install wget gnupg software-properties-common locales && \
 	touch /etc/locale.gen && \
 	echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen && \
 	locale-gen && \
@@ -13,7 +13,7 @@ RUN dpkg --add-architecture i386 && \
 	apt-add-repository https://dl.winehq.org/wine-builds/debian/ && \
 	apt-get update apt-get -y install --install-recommends winehq-stable && \
 	add-apt-repository --remove 'deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main' && \
-	apt-get -y --purge remove gnupg && \
+	apt-get -y --purge remove software-properties-common gnupg && \
 	apt-get -y autoremove && \
 	rm -rf /var/lib/apt/lists/*
 ENV LANG=en_US.UTF-8
