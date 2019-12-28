@@ -8,6 +8,7 @@ RUN dpkg --add-architecture i386 && \
 	touch /etc/locale.gen && \
 	echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen && \
 	locale-gen && \
+	apt-get -y install --reinstall ca-certificates && \
 	wget -qO - https://dl.winehq.org/wine-builds/winehq.key | apt-key add - && \
 	apt-add-repository https://dl.winehq.org/wine-builds/debian/ && \
 	apt-get update apt-get -y install --install-recommends winehq-stable && \
