@@ -1,6 +1,6 @@
 FROM debian:buster-slim
 
-MAINTAINER ich777
+LABEL maintainer="admin@minenet.at"
 
 RUN dpkg --add-architecture i386
 RUN apt-get update
