@@ -1,1 +1,1 @@
-Dockerbaseimage based on Ubuntu 18.04 with WINEHQ and wget preinstalled
+Dockerbaseimage based on Debian Buster-slim with WINEHQ and wget preinstalled
