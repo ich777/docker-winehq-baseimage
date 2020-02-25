@@ -1,17 +1,16 @@
-FROM debian:buster-slim
+FROM ich777/debian-baseimage
 
-MAINTAINER ich777
+LABEL maintainer="admin@minenet.at"
 
-RUN dpkg --add-architecture i386
-RUN apt-get update
-RUN apt-get -y install wget software-properties-common
-RUN wget -qO - https://dl.winehq.org/wine-builds/winehq.key | apt-key add -
-RUN apt-add-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main'
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys DFA175A75104960E
-RUN apt-add-repository 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_18.04/ ./'
-RUN apt-get update
-RUN apt-get -y install --install-recommends winehq-staging
-RUN add-apt-repository --remove 'deb https://dl.winehq.org/wine-builds/ubuntu/ bionic main'
-RUN add-apt-repository --remove 'deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/xUbuntu_18.04/ ./'
-RUN apt-get -y --purge remove wget software-properties-common
-RUN apt-get -y autoremove
+RUN dpkg --add-architecture i386 && \
+	apt-get update && \
+	apt -y install gnupg2 software-properties-common && \
+	wget -qO - https://dl.winehq.org/wine-builds/winehq.key | apt-key add - && \
+	apt-add-repository https://dl.winehq.org/wine-builds/debian/ && \
+	wget -O- -q https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/Debian_10/Release.key | apt-key add - && \
+	echo "deb http://download.opensuse.org/repositories/Emulators:/Wine:/Debian/Debian_10 ./" | tee /etc/apt/sources.list.d/wine-obs.list && \
+	apt-get update && \
+	apt -y install --install-recommends winehq-staging && \
+	apt-get -y --purge remove software-properties-common gnupg2 && \
+	apt-get -y autoremove && \
+	rm -rf /var/lib/apt/lists/*
