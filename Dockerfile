@@ -8,7 +8,7 @@ RUN dpkg --add-architecture i386 && \
 	wget -qO - https://dl.winehq.org/wine-builds/winehq.key | apt-key add - && \
 	apt-add-repository https://dl.winehq.org/wine-builds/debian/ && \
 	wget -O- -q https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/Debian_10/Release.key | apt-key add - && \
-	echo "deb http://download.opensuse.org/repositories/Emulators:/Wine:/Debian/Debian_10 ./" | tee /etc/apt/sources.list.d/wine-obs.list && \
+	echo "deb https://download.opensuse.org/repositories/Emulators:/Wine:/Debian/Debian_10 ./" | tee /etc/apt/sources.list.d/wine-obs.list && \
 	apt-get update && \
 	apt -y install --install-recommends winehq-stable && \
 	apt-get -y --purge remove software-properties-common gnupg2 && \
