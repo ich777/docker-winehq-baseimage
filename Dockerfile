@@ -1,7 +1,7 @@
 FROM ich777/debian-baseimage
 
 LABEL org.opencontainers.image.authors="admin@minenet.at"
-LABEL org.opencontainers.image.source="https://github.com/ich777/docker-winehq-baseimage
+LABEL org.opencontainers.image.source="https://github.com/ich777/docker-winehq-baseimage"
 
 RUN dpkg --add-architecture i386 && \
 	apt-get update && \
